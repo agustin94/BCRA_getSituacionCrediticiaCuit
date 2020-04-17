@@ -1,0 +1,19 @@
+{
+  "name": "bcra_getsituacioncrediticiacuit",
+  "version": "1.0.0",
+  "description": "Busca deuda de cuil en BCRA",
+  "main": "situacion_crediticia_CUIT.js",
+  "scripts": {
+    "test": "node situacion_crediticia_CUIT.js numerocuit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agustin94/BCRA_getSituacionCrediticiaCuit.git"
+  },
+  "author": "Agustin Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agustin94/BCRA_getSituacionCrediticiaCuit/issues"
+  },
+  "homepage": "https://github.com/agustin94/BCRA_getSituacionCrediticiaCuit#readme"
+}
