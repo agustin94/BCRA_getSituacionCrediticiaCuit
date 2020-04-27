@@ -119,6 +119,15 @@ const dataOutput = async () => {
                 process.exit()
             }
             
+            await page.waitForSelector('div.right-arrow.pull-right')
+            await page.click('div.right-arrow.pull-right')
+
+            await page.waitForSelector('#\\31  > div > table')
+            let o24meses = await page.$eval('#\\31  > div > table > tbody > tr', e => e.innerText)
+            o24meses = JSON.stringify(o24meses)
+            const array24meses = o24meses.split('\\t')
+            console.log(array24meses[1])
+
             let allData = await page.$eval('#aimprimir > table.table.table-BCRA.table-bordered.table-responsive > tbody', e => e.innerText)
             const convertStringify = JSON.stringify(allData)
             console.log(convertStringify)
@@ -130,7 +139,13 @@ const dataOutput = async () => {
                 "Situacion":separateFila[3],
                 "Monto":separateFila[4],
                 "Días de atraso":separateFila[5],
-                "Observaciones":separateFila[6]
+                "Observaciones":separateFila[6],
+                "Historial 24 meses":{
+                    "Periodo":array24meses[0],
+                    "Situacion":array24meses[1],
+                    "Monto":array24meses[2],
+                    "proceso judicial/Revision":array24meses[3]
+                }
             })
             
             fs.appendFileSync("situacion_crediticia"+processParams.numeroCuit+'.json', putJSONData)
